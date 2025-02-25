@@ -91,3 +91,59 @@ def tam(x):
    ```
 
 3. O resultado será exibido logo depois.
+
+## Análise da Complexidade Ciclomática
+
+A complexidade ciclomática de um programa mede a quantidade de caminhos independentes no fluxo de controle do código. Para a função `karatsuba(x, y)`, seguimos os seguintes passos:
+
+1. **Representação do fluxo de controle**
+   - O algoritmo verifica se `x` ou `y` são menores que 10 e, nesse caso, retorna diretamente `x * y`.
+   - Caso contrário, divide os números e executa três chamadas recursivas.
+   
+2. **Grafo de fluxo**
+   - Cada decisão condicional e chamada recursiva representa um caminho no grafo de fluxo.
+   - O grafo contém:
+     - 6 nós principais (condicional, chamadas recursivas e cálculo final).
+     - 7 arestas conectando os nós.
+     
+3. **Cálculo da complexidade ciclomática**
+   - Utilizando a fórmula:  
+     \[ M = E - N + 2P \]
+     Onde:
+     - \(E = 7\) (arestas)
+     - \(N = 6\) (nós)
+     - \(P = 1\) (número de componentes conexos, pois é um programa único)
+     
+     \[ M = 7 - 6 + 2(1) = 3 \]
+   - Assim, a complexidade ciclomática do algoritmo é **3**.
+
+## Análise da Complexidade Assintótica
+
+A complexidade do algoritmo de Karatsuba pode ser analisada da seguinte forma:
+
+### Complexidade Temporal
+- O algoritmo divide os operandos em metades e realiza **três chamadas recursivas**.
+- O tempo de execução segue a recorrência:
+  \[ T(n) = 3T(n/2) + O(n) \]
+- Aplicando o **Teorema Mestre** para recorrências da forma:
+  \[ T(n) = aT(n/b) + O(n^d) \]
+  Onde:
+  - \( a = 3 \) (três chamadas recursivas)
+  - \( b = 2 \) (divisão dos operandos ao meio)
+  - \( d = 1 \) (operações de soma e subtração são O(n))
+  
+  Como \( a = 3 \) e \( b^d = 2^1 = 2 \), temos que \( a > b^d \), logo a complexidade é:
+  \[ T(n) = O(n^{\log_2 3}) \approx O(n^{1.585}) \]
+
+### Complexidade Espacial
+- O algoritmo utiliza **memória adicional** para armazenar as chamadas recursivas.
+- A profundidade da recursão é \( O(\log n) \), com três chamadas a cada nível.
+- Assim, o espaço utilizado é **O(n^{\log_2 3})**.
+
+### Casos de Complexidade
+- **Melhor caso**: Quando os operandos são pequenos (menos de 10 dígitos), a complexidade é **O(1)**.
+- **Caso médio e pior caso**: Para operandos grandes, segue a complexidade **O(n^{1.585})**.
+
+## Conclusão
+O algoritmo de Karatsuba melhora a multiplicação ingênua de **O(n^2)** para **O(n^{1.585})**, tornando-o mais eficiente para números grandes. No entanto, para números pequenos, a abordagem tradicional pode ser mais eficiente devido ao overhead das chamadas recursivas.
+

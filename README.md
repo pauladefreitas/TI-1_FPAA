@@ -126,47 +126,47 @@ $$
 
 - Aplicando o **Teorema Mestre**:
 
-  $$
-  T(n) = aT(n/b) + O(n^d)
-  $$
+$$
+T(n) = aT(n/b) + O(n^d)
+$$
 
-  Onde:
+Onde:
 
-  - \( a = 3 \) (três chamadas recursivas)
-  - \( b = 2 \) (divisão dos operandos ao meio)
-  - \( d = 1 \) (operações de soma e subtração são \( O(n) \))
+- \( a = 3 \) (três chamadas recursivas)
+- \( b = 2 \) (divisão dos operandos ao meio)
+- \( d = 1 \) (operações de soma e subtração são \( O(n) \))
 
-  $$
-  T(n) = O(n^{\log_2 3}) \approx O(n^{1.585})
-  $$
+$$
+T(n) = O(n^{\log_2 3}) \approx O(n^{1.585})
+$$
 
 ### Complexidade Espacial
 
 - O algoritmo utiliza **memória adicional** para armazenar as chamadas recursivas.
 - A profundidade da recursão é
 
-  $$
-  O(\log n)
-  $$
+$$
+O(\log n)
+$$
 
-  com três chamadas a cada nível.
+com três chamadas a cada nível.
 
 - Assim, o espaço utilizado é
 
-  $$
-  O(n^{\log_2 3})
-  $$
+$$
+O(n^{\log_2 3})
+$$
 
 ### Casos de Complexidade
 
 - **Melhor caso**: Quando os operandos são pequenos (menos de 10 dígitos), a complexidade é
 
-  $$
-  O(1)
-  $$
+$$
+O(1)
+$$
 
 - **Caso médio e pior caso**: Para operandos grandes, segue a complexidade
 
-  $$
-  O(n^{1.585})
-  $$
+$$
+O(n^{1.585})
+$$

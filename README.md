@@ -112,22 +112,20 @@ def tam(x):
 
      \[ M = 15 - 14 + 2(1) = 3 \]
 
-   - Assim, a complexidade ciclomática do algoritmo é **3**.
+   - A complexidade ciclomática do algoritmo é **3**.
 
 ### Análise da Complexidade Assintótica
 
-A complexidade do algoritmo de Karatsuba pode ser analisada da seguinte forma:
-
 ### Complexidade Temporal
 
-$$
-T(n) = 3T(n/2) + O(n)
-$$
-
-- Aplicando o **Teorema Mestre**:
+- Aplicando o **Teorema Mestre** para cálculo:
 
 $$
 T(n) = aT(n/b) + O(n^d)
+$$
+
+$$
+T(n) = 3T(n/2) + O(n)
 $$
 
 Onde:
@@ -142,31 +140,23 @@ $$
 
 ### Complexidade Espacial
 
-- O algoritmo utiliza **memória adicional** para armazenar as chamadas recursivas.
-- A profundidade da recursão é
+- A profundidade da recursão é \( O(\log n) \), pois a cada nível os números são divididos ao meio.
+- Cada chamada armazena três subproblemas, mas como a recursão só vai até \( O(\log n) \) níveis, a complexidade espacial total é:
 
-$$
-O(\log n)
-$$
-
-com três chamadas a cada nível.
-
-- Assim, o espaço utilizado é
-
-$$
-O(n^{\log_2 3})
-$$
+  $$
+  O(n^{\log_2 3})
+  $$
 
 ### Casos de Complexidade
 
-- **Melhor caso**: Quando os operandos são pequenos (menos de 10 dígitos), a complexidade é
+- **Melhor caso**: Quando os números multiplicados são pequenos (menos de 10 dígitos), a multiplicação ocorre diretamente sem chamadas recursivas:
 
-$$
-O(1)
-$$
+  $$
+  O(1)
+  $$
 
-- **Caso médio e pior caso**: Para operandos grandes, segue a complexidade
+- **Caso médio e pior caso**: Quando os números são grandes, a complexidade segue a mesma do tempo de execução, determinada pelo Teorema Mestre:
 
-$$
-O(n^{1.585})
-$$
+  $$
+  O(n^{\log_2 3}) \approx O(n^{1.585})
+  $$

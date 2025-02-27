@@ -96,26 +96,21 @@ def tam(x):
 
 ### Análise da Complexidade Ciclomática
 
-A complexidade ciclomática de um programa mede a quantidade de caminhos independentes no fluxo de controle do código. Para a função `karatsuba(x, y)`, seguimos os seguintes passos:
+1. **Grafo de fluxo**
 
-1. **Representação do fluxo de controle**
-   - O algoritmo verifica se `x` ou `y` são menores que 10 e, nesse caso, retorna diretamente `x * y`.
-   - Caso contrário, divide os números e executa três chamadas recursivas.
-2. **Grafo de fluxo**
-   - Cada decisão condicional e chamada recursiva representa um caminho no grafo de fluxo.
-   - O grafo contém:
-     - 6 nós principais (condicional, chamadas recursivas e cálculo final).
-     - 7 arestas conectando os nós.
-3. **Cálculo da complexidade ciclomática**
+![Grafo de fluxo](diagram/flowGraph.png)
+
+2. **Cálculo da complexidade ciclomática**
+
    - Utilizando a fórmula:  
      \[ M = E - N + 2P \]
      Onde:
 
-     - \(E = 7\) (arestas)
-     - \(N = 6\) (nós)
+     - \(E = 15\) (arestas)
+     - \(N = 14\) (nós)
      - \(P = 1\) (número de componentes conexos, pois é um programa único)
 
-     \[ M = 7 - 6 + 2(1) = 3 \]
+     \[ M = 15 - 14 + 2(1) = 3 \]
 
    - Assim, a complexidade ciclomática do algoritmo é **3**.
 
@@ -123,29 +118,55 @@ A complexidade ciclomática de um programa mede a quantidade de caminhos indepen
 
 A complexidade do algoritmo de Karatsuba pode ser analisada da seguinte forma:
 
-#### Complexidade Temporal
+### Complexidade Temporal
 
-- O algoritmo divide os operandos em metades e realiza **três chamadas recursivas**.
-- O tempo de execução segue a recorrência:
-  \[ T(n) = 3T(n/2) + O(n) \]
-- Aplicando o **Teorema Mestre** para recorrências da forma:
-  \[ T(n) = aT(n/b) + O(n^d) \]
+$$
+T(n) = 3T(n/2) + O(n)
+$$
+
+- Aplicando o **Teorema Mestre**:
+
+  $$
+  T(n) = aT(n/b) + O(n^d)
+  $$
+
   Onde:
 
   - \( a = 3 \) (três chamadas recursivas)
   - \( b = 2 \) (divisão dos operandos ao meio)
-  - \( d = 1 \) (operações de soma e subtração são O(n))
+  - \( d = 1 \) (operações de soma e subtração são \( O(n) \))
 
-  Como \( a = 3 \) e \( b^d = 2^1 = 2 \), temos que \( a > b^d \), logo a complexidade é:
-  \[ T(n) = O(n^{\log_2 3}) \approx O(n^{1.585}) \]
+  $$
+  T(n) = O(n^{\log_2 3}) \approx O(n^{1.585})
+  $$
 
-#### Complexidade Espacial
+### Complexidade Espacial
 
 - O algoritmo utiliza **memória adicional** para armazenar as chamadas recursivas.
-- A profundidade da recursão é \( O(\log n) \), com três chamadas a cada nível.
-- Assim, o espaço utilizado é **O(n^{\log_2 3})**.
+- A profundidade da recursão é
 
-#### Casos de Complexidade
+  $$
+  O(\log n)
+  $$
 
-- **Melhor caso**: Quando os operandos são pequenos (menos de 10 dígitos), a complexidade é **O(1)**.
-- **Caso médio e pior caso**: Para operandos grandes, segue a complexidade **O(n^{1.585})**.
+  com três chamadas a cada nível.
+
+- Assim, o espaço utilizado é
+
+  $$
+  O(n^{\log_2 3})
+  $$
+
+### Casos de Complexidade
+
+- **Melhor caso**: Quando os operandos são pequenos (menos de 10 dígitos), a complexidade é
+
+  $$
+  O(1)
+  $$
+
+- **Caso médio e pior caso**: Para operandos grandes, segue a complexidade
+
+  $$
+  O(n^{1.585})
+  $$

@@ -143,20 +143,20 @@ $$
 - A profundidade da recursão é \( O(\log n) \), pois a cada nível os números são divididos ao meio.
 - Cada chamada armazena três subproblemas, mas como a recursão só vai até \( O(\log n) \) níveis, a complexidade espacial total é:
 
-  $$
-  O(n^{\log_2 3})
-  $$
+$$
+O(n^{\log_2 3})
+$$
 
 ### Casos de Complexidade
 
 - **Melhor caso**: Quando os números multiplicados são pequenos (menos de 10 dígitos), a multiplicação ocorre diretamente sem chamadas recursivas:
 
-  $$
-  O(1)
-  $$
+$$
+O(1)
+$$
 
 - **Caso médio e pior caso**: Quando os números são grandes, a complexidade segue a mesma do tempo de execução, determinada pelo Teorema Mestre:
 
-  $$
-  O(n^{\log_2 3}) \approx O(n^{1.585})
-  $$
+$$
+O(n^{\log_2 3}) \approx O(n^{1.585})
+$$
